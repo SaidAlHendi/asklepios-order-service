@@ -5,11 +5,18 @@ import { Type } from 'class-transformer';
 import { ValidateNested } from 'class-validator';
 
 import { UpdateOrderItemDto } from './update-order-item.dto';
-import { OrderStatus } from '@prisma/client';
 
 export class UpdateOrderDto {
   @ApiPropertyOptional({
     type: [UpdateOrderItemDto],
+    example: [
+      { name: 'Bandage', quantity: 2, price: 10.5 },
+      {
+        name: 'Syringe',
+        quantity: 5,
+        price: 2.0,
+      },
+    ],
   })
   @IsOptional()
   @IsArray()

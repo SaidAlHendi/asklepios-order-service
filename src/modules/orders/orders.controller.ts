@@ -20,11 +20,6 @@ export class OrdersController {
     return await this.ordersService.create(data);
   }
 
-  @Post(':id/status')
-  changeStatus(@Param('id') id: string, @Body() dto: ChangeOrderStatusDto) {
-    return this.ordersService.changeStatus(id, dto.status);
-  }
-
   @Get()
   findAll() {
     return this.ordersService.findAll();
@@ -34,12 +29,18 @@ export class OrdersController {
   async findById(@Param('id') id: string) {
     return await this.ordersService.findById(id);
   }
+
+  @Patch(':id/status')
+  changeStatus(@Param('id') id: string, @Body() dto: ChangeOrderStatusDto) {
+    return this.ordersService.changeStatus(id, dto.status);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() dto: UpdateOrderDto) {
     return this.ordersService.update(id, dto);
   }
 
-  @Delete('all')
+  @Delete('')
   deleteAll() {
     return this.ordersService.deleteAll();
   }
